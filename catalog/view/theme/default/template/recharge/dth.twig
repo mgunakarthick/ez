@@ -1,0 +1,91 @@
+{{ header }} {{ subheader }}
+<section class="container recharge">
+	<div class="row">
+		<div class="col-12">
+			<h1>DTH Recharge</h1>
+			<div class="row">
+				<form method="post" action="{{ action }}" name="dthfrom" id="dthfrom" enctype="multipart/form-data">
+				<div class="col-md-3 mb30">
+					<div>
+						<label>Operator
+							<span class="color-red">*</span>
+						</label>
+						<select class="form-control" id="op" name="op">
+							{% for d in dthOperators %}
+							<option value="{{ d['opcode'] }}">{{ d['newtworkName'] }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-3 mb30">
+					<div>
+						<label>Circle
+							<span class="color-red">*</span>
+						</label>
+						<select class="form-control" id="cr" name="cr">
+							{% for c in circles %}
+							<option value="{{ c['circlecode'] }}">{{ c['name'] }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+
+
+				<div class="col-md-4 mb30">
+					<div class="input-text">
+						<label>DTH Customer ID</label>
+						<input type="text" placeholder="Customer ID" id="rcnumber" name="rcnuber" />
+					</div>
+				</div>
+
+				<div class="col-md-2 mb30">
+					<div class="input-text">
+						<label>Amount</label>
+						<input type="text" id="rcAmt" name="rcAmt" placeholder="Amount" value="0" />
+					</div>
+				</div>
+				<div class="col-md-3 mb30 pt25">
+					<div class="button">
+						<div id="doRc" class="btn">PROCED</div>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+</section>
+{{ footer }}
+<script type="text/javascript" src="js/responsive-tabs.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#doRc").click(function () {
+			var doRc = 1;
+			var mn = $("#rcnumber").val();
+			var op = $("#op").val();
+			var rcAmt = $("#rcAmt").val();
+			if (mn.length < 9) {
+				doRc = 0;
+			}
+			if (op.length == 0) {
+				doRc = 2;
+			}
+			if (rcAmt < 10) {
+				doRc = 4;
+			}
+			if (doRc == 1) {
+					$('#dthfrom').submit();
+			} else {
+				alert('Sorry Please fill all required fields');
+			}
+		});
+
+		$('#myTab a').click(function (e) {
+			e.preventDefault()
+			$(this).tab('show')
+		});
+	});
+	(function ($) {
+		fakewaffle.responsiveTabs(['xs', 'sm']);
+	})(jQuery);
+</script>

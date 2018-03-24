@@ -1,0 +1,155 @@
+body{
+	background: url(../images/back.jpg) no-repeat;
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	position: absolute;
+	background-size: cover;
+	margin:0;
+	padding:0;
+	background-attachment: fixed;
+	font-family: 'Poppins', sans-serif;
+
+}
+p{
+	margin: 0;
+}
+.overlay{
+	background-color: rgba(255,255,255,0.9);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+.logo{
+	text-align: center;
+	height: auto;
+	z-index: 1;
+	position: relative;
+	margin:0 auto;
+	margin-top: 100px;
+}
+.logo img{
+	width: 270px;
+	margin:0 auto;
+
+}
+p.soon{
+	font-size: 30px;
+	margin-top: 30px;
+	color:#000;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+.services{
+	z-index: 2;
+	position: relative;
+	text-align: center;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 7%;
+	margin-bottom: 5%;
+	padding-top:2%;
+	text-transform: uppercase;
+}
+.services h2{
+	margin-bottom: 20px;
+	font-weight: 400;
+	font-size: 18px;
+	font-weight: 600;
+}
+.services ul{
+	list-style: none;
+	text-align: center;
+	padding: 0;
+}
+.services ul li{
+	text-align: center;
+	display: inline-block;
+	margin:10px;
+	border-right: 1px solid #EEE;
+	padding-right: 20px;
+}
+.services ul li:last-child{
+	border:none;
+}
+.services ul li img{
+	width: 40px;
+}
+.services ul li p{
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 1px;
+	margin-top: 10px;
+}
+
+@media screen and (max-width: 767px){
+	body{
+		overflow: visible;
+	}
+	.logo{
+		margin-top:10px;
+	}
+	p.soon{
+		font-size: 30px;
+		padding: 10px;		
+	}
+	.services{
+		text-align: left;
+	}
+	.services ul li{
+		text-align: left;
+		display: block;
+		margin-bottom:10px;
+		width:100%;		
+		border-right: none;
+		padding-right: 0px;
+	}
+	.services h2{
+		font-size: 13px;
+	}
+	.services ul li img{
+		width: 30px;
+	}
+	.services ul li p{
+		font-size: 10px;
+		display: inline-block;
+		margin-left: 10px;
+		position: relative;
+		top:-5px;
+	}
+	@media screen and (orientation:landscape) {		
+	
+	   .services ul li{
+			text-align: left;
+			display: block;
+			float:left;
+			margin-bottom:10px;
+			width:45%;		
+			border-right: none;
+			padding-right: 0px;
+		}
+		
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 1024px){
+	.services{
+			text-align: left;		
+	}
+	.services ul li{
+			text-align: left;
+			display: block;
+			float:left;
+			margin-bottom:10px;
+			width:45%;		
+			border-right: none;
+			padding-right: 0px;
+		}
+		.services ul li p{
+			font-size: 10px;
+			display: inline-block;
+			margin-left: 10px;
+			position: relative;
+			top:-5px;
+		}
+	}

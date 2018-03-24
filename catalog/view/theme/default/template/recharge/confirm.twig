@@ -1,0 +1,98 @@
+{{ header }} {{ subheader }}
+<section class="container pay">
+	<h1>Payment</h1>
+	<div class="row">			
+			<div class="col-md-3 mb30">
+				 <div class="confirm">
+	             	<label>Mobile</label>
+	             	<p><strong>{{ rc['mn'] }}</strong></p>
+	             </div>
+			</div>
+			<div class="col-md-3 mb30">
+				  <div class="confirm">
+	             	<label>Operator</label>
+	             	<p>{# <img src="images/aircel.jpg" width="100" /> #} {{ network }}</p>
+	             </div>
+			</div>
+			<div class="col-md-3 mb30">
+				  <div class="confirm">
+	             	<label>Amount</label>
+	             	<p><strong>Rs. {{ rc['rcAmt'] }}</strong></p>
+	             </div>
+			</div>
+			<div class="col-md-3 mb30">
+				 <div class="button">					
+					<form action="{{ action }}" method="post" >	
+						<input type="hidden" name="mn" id="rcnuber" value="{{ rc['mn'] }}" />
+						<input type="hidden" name="op" id="operator" value="{{ rc['op'] }}" />
+						<input type="hidden" id="circle" name="cr" value="{{ rc['cr'] }}" />
+						<input type="hidden" id="rcAmt" name="rcAmt" value="{{ rc['rcAmt'] }}" />
+						<input type="submit" class="btn" value="Proceed to Pay" />
+					 </form>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			{# <div class="col-12 mb30 coupon">
+				<p class="valid"><span>Success:</span> 20% is Applied</p>
+				<div class="input-text">
+					<input type="text" placeholder="Apply Coupon Code">
+					<input type="submit" class="btn" value="Apply" />
+				</div>
+				<p class="invalid">Invalid Coupon code</p>
+			</div> #}
+		
+	</div>
+</section>
+
+{{ footer }}
+<script type="text/javascript" src="js/responsive-tabs.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#doRc").click(function () {
+			var doRc = 1;
+			var mn = $("#rcnuber").val();
+			var op = $("#operator").val();
+			var cr = $("#circle").val();
+			var rcAmt = $("#rcAmt").val();
+			if (mn.length < 10) {
+				doRc = 0;
+			}
+			if (op.length == 0) {
+				doRc = 2;
+			}
+			if (cr.length == 0) {
+				doRc = 3;
+			}
+			if (rcAmt <= 0) {
+				doRc = 4;
+			}
+			if (doRc == 1) {
+				var url = 'index.php?route=eapi/api/doRc';
+				$.ajax({
+					type: 'POST',
+					url: url,
+					data: '&mn=' + mn + '&op=' + op + '&cr=' + cr+ '&rcAmt=' + rcAmt,
+					dataType: 'json',
+					beforeSend: function () {},
+					success: function (json) {
+						if (json['resp'][1]== 'Success') {
+							alert('SUCCESS, Your transaction id is '+json['transId']);
+						} else {
+							alert('Sorry Unable to process, Your transaction id is '+json['transId']);
+						}
+					}
+				});
+			} else {
+				alert('Sorry Please fill all required fields');
+			}
+		});
+
+		$('#myTab a').click(function (e) {
+			e.preventDefault()
+			$(this).tab('show')
+		});
+	});
+	(function ($) {
+		fakewaffle.responsiveTabs(['xs', 'sm']);
+	})(jQuery);
+</script>

@@ -1,0 +1,97 @@
+.user-regiser {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.user-regiser label {
+  font-weight: normal;
+}
+.user-regiser h1 {
+  font-size: 24px;
+  text-transform: uppercase;
+  margin: 10px 0px 30px;
+}
+.user-regiser input[type="text"],
+.user-regiser input[type="email"],
+.user-regiser input[type="password"] {
+  border: 1px solid #CCCCCC;
+  padding-left: 5px;
+  line-height: 35px;
+  width: 100%;
+  margin: 2px 0px 20px;
+}
+.user-regiser input[type="submit"],
+.user-regiser input[type="button"] {
+  border: 1px solid #2B3691;
+  background-color: #2B3691;
+  height: 50px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  color: #FFF;
+  font-size: 14px;
+  margin: 10px 0px;
+  margin-bottom: 20px;
+}
+.user-regiser .reg-social {
+  border-top: 1px dotted #CCC;
+}
+.user-regiser .reg-social p {
+  margin-top: 10px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+.user-regiser .reg-social p span {
+  display: inline-block;
+  padding-right: 3px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.user-regiser .reg-social a .fa-facebook-square,
+.user-regiser .reg-social a .fa-twitter-square {
+  font-size: 50px !important;
+  width: 50px;
+  color: #2B3691;
+}
+.user-regiser ul li {
+  list-style: none;
+  line-height: 25px;
+  border-bottom: 1px solid #F4F4F4;
+}
+.user-regiser p.ques {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.user-regiser p.ans {
+  color: #666;
+  font-size: 12px;
+  line-height: 30px;
+}
+.user-regiser #send p {
+  font-size: 13px;
+  padding-top: 10px;
+}
+.user-regiser #send .ac {
+  text-align: right;
+}
+.user-regiser #send .ac .forgot-pwd {
+  border: 1px solid #2B3691;
+  background-color: #2B3691;
+  height: 40px;
+  margin: 2px 0px !important;
+}
+.user-regiser #FP {
+  cursor: pointer;
+}
+.user-regiser .registerNow {
+  padding-top: 20px;
+  font-size: 14px;
+}
+.user-regiser .ques label {
+  font-weight: 700;
+  display: block;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.user-regiser .ques p {
+  margin-bottom: 20px;
+  line-height: 25px;
+}

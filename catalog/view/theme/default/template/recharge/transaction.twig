@@ -1,0 +1,62 @@
+{{ header }} {{ subheader }}
+{# <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"/> #}
+<link rel="stylesheet" type="text/css" href="https:////cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/> 
+<section class="container pay">
+	<h1>Transaction History</h1>
+	<div style="float:right;">Total Amount : Rs. {{ amountTotal['amount'] |number_format(2, '.', ',') }} <br>  Total Commissionn : Rs. {{ amountTotal['comission'] |number_format(2, '.', ',') }}</div>
+	<table id="example" class="hover table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Sl No</th>
+                <th>Transaction No</th>
+				<th>Number</th>
+                <th>Operator</th>
+                <th>Amount</th>
+                <th>Commissionn Rs (%)</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% set i=0 %}
+		 {% for t in transactions %}
+            <tr>
+                <td>{% set i = i + 1 %} {{ i }}</td>
+                <td>{{ t['customer_transaction_id'] }}</td>
+                <td>{{ t['rcNumber'] }}</td>
+                <td>{{ t['newtworkName'] }}</td>
+            	<td> {{ t['amount'] |number_format(2, '.', ',') }} </td>
+                <td> 
+                    {{ t['commissionAmt'] |number_format(2, '.', ',') }} 
+                    {% if t['commissionAmt'] >0 %} 
+                        ( {{ t['commission'] |number_format(2, '.', ',') }} %)
+                    {% endif %}
+                 </td>
+                <td>
+					{% if t['orderStatus'] == 1 %} 
+						{{ 'Success' }}
+					{% elseif t['orderStatus'] == 2 %} 
+						{{ 'Failed' }}
+					{% else %}
+						{{ 'Pending' }}
+					{% endif %}
+				 </td>
+            	<td> {{ t['date_added']|date("d-M-Y") }} </td>
+            </tr>
+		{% endfor %}
+        </tbody>
+    </table>
+</section>
+{# <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script> #}
+
+<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+    	$('#example').DataTable();
+	} );
+</script>
+{{ footer }}
