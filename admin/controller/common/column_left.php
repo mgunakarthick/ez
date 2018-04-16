@@ -54,7 +54,7 @@ class ControllerCommonColumnLeft extends Controller {
 			// Attributes
 			$attribute = array();
 			
-			if ($this->user->hasPermission('access', 'catalog/attribute')) {
+			/* if ($this->user->hasPermission('access', 'catalog/attribute')) {
 				$attribute[] = array(
 					'name'     => $this->language->get('text_attribute'),
 					'href'     => $this->url->link('catalog/attribute', 'user_token=' . $this->session->data['user_token'], true),
@@ -108,7 +108,7 @@ class ControllerCommonColumnLeft extends Controller {
 					'href'     => $this->url->link('catalog/review', 'user_token=' . $this->session->data['user_token'], true),
 					'children' => array()		
 				);		
-			}
+			} */
 			
 			if ($this->user->hasPermission('access', 'catalog/information')) {		
 				$catalog[] = array(
@@ -118,7 +118,7 @@ class ControllerCommonColumnLeft extends Controller {
 				);					
 			}
 			
-			/* if ($catalog) {
+			 if ($catalog) {
 				$data['menus'][] = array(
 					'id'       => 'menu-catalog',
 					'icon'	   => 'fa-tags', 
@@ -126,7 +126,7 @@ class ControllerCommonColumnLeft extends Controller {
 					'href'     => '',
 					'children' => $catalog
 				);		
-			} */
+			} 
 			
 			// Extension
 			$marketplace = array();

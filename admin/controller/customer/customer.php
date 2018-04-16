@@ -278,13 +278,13 @@ class ControllerCustomerCustomer extends Controller {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
-			$sort = 'name';
+			$sort = 'wreq';
 		}
 
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
 		} else {
-			$order = 'ASC';
+			$order = 'DESC';
 		}
 
 		if (isset($this->request->get['page'])) {
@@ -395,17 +395,21 @@ class ControllerCustomerCustomer extends Controller {
 			$data['customers'][] = array(
 				'customer_id'    => $result['customer_id'],
 				'name'           => $result['name'],
+				'customer_group_id'           => $result['customer_group_id'],
+				'ctype'           => $result['ctype'],
+				'wreq'           => $result['wreq'],
 				'email'          => $result['email'],
 				'customer_group' => $result['customer_group'],
 				'status'         => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
-				'ip'             => $result['ip'],
+				'balance'             => $result['wallet'],
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'unlock'         => $unlock,
 				'store'          => $store_data,
-				'edit'           => $this->url->link('customer/customer/edit', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . $url, true)
+				'edit'           => $this->url->link('customer/customer/edit', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . $url, true),
+				'addAMt'           => $this->url->link('customer/customer/addamt', '&customer_id=' . $result['customer_id'] . '&user_token=' . $this->session->data['user_token']  . '&wreq=', true)
 			);
 		}
-
+		
 		$data['user_token'] = $this->session->data['user_token'];
 		
 		if (isset($this->error['warning'])) {
@@ -413,6 +417,10 @@ class ControllerCustomerCustomer extends Controller {
 		} else {
 			$data['error_warning'] = '';
 		}
+		if (isset($this->session->data['err_warning'])) {
+			$data['error_warning'] .= $this->session->data['err_warning'];
+			unset($this->session->data['err_warning']);
+		} 
 
 		if (isset($this->session->data['success'])) {
 			$data['success'] = $this->session->data['success'];
@@ -1493,5 +1501,18 @@ class ControllerCustomerCustomer extends Controller {
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
+	}
+	public function addamt(){
+		// Customer Group
+		if (isset($this->request->get['customer_id']) && isset($this->request->get['wreq']) && $this->request->get['wreq'] > 0 && $this->request->get['customer_id']!='') {
+			$this->load->model('customer/customer');
+			$this->model_customer_customer->addAmt($this->request->get);
+			$this->session->data['success'] = 'Amount added succesfully!';
+			$this->response->redirect($this->url->link('customer/customer', 'user_token=' . $this->request->get['user_token'], true));
+		}else {
+			$this->session->data['err_warning'] = 'Please fill the correct amount!';
+			//$this->error['warning'] = 'Please fill the amount!';
+			$this->response->redirect($this->url->link('customer/customer', 'user_token=' . $this->request->get['user_token'], true));
+		}
 	}
 }

@@ -24,14 +24,18 @@
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet"> #}
 
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-<link href="css/bootstrap-grid.css" type="text/css" rel="stylesheet" />
-<link href="css/select2.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="css/bootstrap.min.css?1.2" type="text/css" rel="stylesheet" />
+<link href="css/bootstrap-grid.css?1.2" type="text/css" rel="stylesheet" />
+<link href="css/animate.min.css?1.2" type="text/css" rel="stylesheet" />
+<link href="css/select2.min.css?1.2" rel="stylesheet" />
+<link href="css/slick.css?1.2" rel="stylesheet" />
+<link href="css/slick-theme.css?1.2" rel="stylesheet" />
+<link rel="stylesheet?1.2" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href="css/style.css" type="text/css" rel="stylesheet" />
-<link href="css/custom.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet">
-<script src="js/jquery-3.3.1.min.js"></script>
+{# <link href="css/custom.css?1.2" rel="stylesheet" /> #}
+<script src="js/jquery-3.3.1.min.js?1.2"></script>
+
 
 {% for style in styles %}
 <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
@@ -92,23 +96,32 @@
 {{ menu }} #}
 <section class="backimages">
 <header>
+<style>
+.breadcrumb{display:none;}
+</style>
 		<section class="container">
 			<div class="row topHead">
 				<div class="col-12 col-sm-12 col-md-6 none">
-					<a href="about-us">AboutUs</a>
-					<a href="contact-us">Contact Us</a>
-					<a href="faq">FAQ</a>
+					<a href="index.php?route=information/information&information_id=4">AboutUs</a>
+					<a href="index.php?route=information/information&information_id=4">Contact Us</a>
+					<a href="index.php?route=information/information&information_id=4">FAQ</a>
 				</div>
 				<div class="col-12 col-sm-12 col-md-6 algin-right">
         {% if customer == '' %}
 					<a href="index.php?route=common/login">Login </a>
 					<a href="index.php?route=common/register">Registration </a>
-					<a href="index.php?route=common/login">Retailer</a>
-					<a href="index.php?route=common/login">Distributor</a>
+				{# 	<a href="index.php?route=common/login">Retailer</a>
+					<a href="index.php?route=common/login">Distributor</a> #}
         {% else %} 
 
         {{ userName }} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
         <a href="index.php?route=recharge/transaction">Transactions</a>
+        {% if showReseller == 1 %}
+        <a href="index.php?route=recharge/reseller">Reseller</a>
+        {% endif %}
+        {% if hideAll != 1 %}
+          <a href="index.php?route=recharge/reseller/wreq">Request</a>
+        {% endif %}
           <a href="index.php?route=common/login/logout">Logout</a>        
         {% endif %}
 				</div>
@@ -119,7 +132,7 @@
 				</div>
         {% if customer != '' %}
 				<div class="col-6 algin-right">
-					<div class="wallet"><a href="my-wallet.php"><img src="images/wallet.png" /> <strong>Rs. {{wallet}}</strong></a></div>
+					<div class="wallet"><a href="index.php?route=recharge/transaction"><img src="images/wallet.png" /> <strong>Rs. {{wallet}}</strong></a></div>
 				</div>
         {% endif %}
 			</div>

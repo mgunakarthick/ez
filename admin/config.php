@@ -23,6 +23,10 @@ define('DIR_MODIFICATION', DIR_STORAGE . 'modification/');
 define('DIR_SESSION', DIR_STORAGE . 'session/');
 define('DIR_UPLOAD', DIR_STORAGE . 'upload/');
 
+//RC PANEL
+define('_RC_PANAL_USER_', '110290');
+define('_RC_PANAL_PWD_', '3q2z3uu2');
+
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');

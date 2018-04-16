@@ -29,11 +29,12 @@ class ControllerRechargeMobile extends Controller {
 		$data['action'] = $this->url->link('recharge/mobile/proceeddth', '', true);
 		$this->load->model('catalog/api');
 		$data['dthOperators'] = $this->model_catalog_api->dthOperators();
-		$data['circles'] = $this->model_catalog_api->getCirlces();
+	//	$data['circles'] = $this->model_catalog_api->getCirlces();
 	//	print_r($data['dthOperators']); die;   
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
-		$data['subheader'] = $this->load->controller('common/header/subheader');		$this->response->setOutput($this->load->view('recharge/dth', $data));
+		$data['subheader'] = $this->load->controller('common/header/subheader');	
+		$this->response->setOutput($this->load->view('recharge/dth', $data));
 	} else {
 		$this->response->redirect($this->url->link('common/login', '', true));
 	}

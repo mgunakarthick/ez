@@ -1,4 +1,18 @@
 {{ header }} {{ subheader }}
+<style>
+.planHead, .planBox{display:none;} .planContainer, .errPlanBox, .planBox{    clear: both;
+    float: left;
+    width: 100%;}
+	.errPlanBox{color:red;}
+	.loaderBox{text-align:center; float:left; clear:both; width:100%; height:100%; display:table; min-height:150px; display:none;}
+	.loader {
+		display: table;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		overflow: hidden;
+	}
+</style>
 <section class="container recharge">
 	<div class="row">
 		<div class="col-12">
@@ -23,10 +37,13 @@
 						<label>Circle
 							<span class="color-red">*</span>
 						</label>
-						<select class="form-control" id="cr" name="cr">
-							{% for c in circles %}
+						<select class="form-control" id="cr" name="cr" >
+							{# {% for c in circles %}
 							<option value="{{ c['circlecode'] }}">{{ c['name'] }}</option>
-							{% endfor %}
+							{% endfor %} #}
+							<option value="0" class="">Select Circle</option>
+							<option value="SI" class="nonSD">South India</option>
+							<option value="RI">Rest of India</option>
 						</select>
 					</div>
 				</div>
@@ -47,18 +64,137 @@
 				</div>
 				<div class="col-md-3 mb30 pt25">
 					<div class="button">
+						<div id="plan" class="btn">Check Plan</div>
+					</div>
+				</div>
+				<div class="col-md-3 mb30 pt25">
+					<div class="button">
 						<div id="doRc" class="btn">PROCED</div>
 					</div>
 				</div>
 			</form>
+		<div class="planContainer">
+			<h2 class="planHead">Browse Plans of <span id="oprtxt"></span> </h2>
+			<div class="errPlanBox"></div>
+			<div class="loaderBox">
+				<div class="loader">
+					<div class="loader__align">
+						<img src="images/Eazy-pay-logo.png" width="200" /><br/>
+						<img src="images/Gear-5s-200px.svg" width="50" />
+						<p>Loading....</p>
+					</div>
+				</div>
+			</div>
+			<div class="planBox">
+				<ul class="nav nav-tabs responsive" id="myTab">
+					<li class="active tab1">
+						<a href="#tab1">Monthly</a>
+					</li>
+				</ul>
+
+				<div class="tab-content responsive">
+					<div class="tab-pane active" id="tab1">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Plan Name</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday1">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div>
 			</div>
 		</div>
 	</div>
 </section>
-{{ footer }}
 <script type="text/javascript" src="js/responsive-tabs.js"></script>
 <script type="text/javascript">
 	$(function () {
+		var operators1 = {
+			{% for d in dthOperators %}
+			{{ d['opcode'] }}:"{{ d['newtworkName'] }}",
+			{% endfor %}
+		};
+		var circle1 = {
+			SI:"South India",
+			RI:"Rest of India",
+			TA:"Tamil",
+			KA:"Kannada",
+			MA:"Malayalam",
+			TE:"Telugu"
+		};
+		var pln = 0;
+		$("#plan").click(function () {
+			var op = $("#op").val();
+			var cr = $("#cr").val();
+			if (pln == 0 && op!="0" && cr!= "0") {
+				$('#oprtxt').html(operators1[op]+' - '+ circle1[cr]);
+				$('.planContainer').show();
+				$('.planHead').slideDown();
+				var url = 'index.php?route=eapi/api/getDthPlan';
+				var data = '&op=' + op + '&cr=' + cr;
+				$.ajax({
+					type: 'POST',
+					url: url,
+					data: data,
+					dataType: 'json',
+					beforeSend: function () {pln = 1; $('.errPlanBox, .planBox').slideUp(); $('.loaderBox').slideDown(); },
+					success: function (json) {
+						console.log(json);
+						pln = 0;
+						$('.loaderBox').hide();
+						if (json['error'] == '1') {
+							$('.errPlanBox').html(json['message']);
+							$('.errPlanBox').slideDown();
+						} else {
+							$('.boday1').html(json['plans']);
+							$('.planBox').slideDown();
+						}
+						
+					}
+				});
+			}
+		});
+
+		$('#op').on('select2:select', function (e) {
+			$('#cr').val("0").trigger('change');
+    		var data = e.params.data;
+			$('.planContainer').slideUp();
+			if(data.id=='SD'){
+				$("#cr").empty();
+				/*var newOption = new Option('Tamil', "CH", true, true);
+				$('#cr').append(newOption);*/
+
+				 var html = '<option value="0" class="">Select Circle</option><option  value="KA">Kannada</option><option value="MA" class="showSD">Malayalam</option><option value="TA" class="showSD">Tamil</option><option value="TE" class="showSD">Telugu</option><option value="RI">Rest of India</option>';
+				$("#cr").html(html);
+			} else {
+				var html = '<option value="0" class="">Select Circle</option><option value="SI" class="nonSD">South India</option><option value="RI">Rest of India</option>';
+				$("#cr").html(html);
+
+			}
+		});
+		$('#cr').on('select2:select', function (e) {
+    		var data = e.params.data;
+			console.log(data.id);
+
+			if(data.id == "0" ){
+
+			} else {
+				$("#plan").trigger('click');
+			}
+		});
+
+
 		$("#doRc").click(function () {
 			var doRc = 1;
 			var mn = $("#rcnumber").val();
@@ -88,4 +224,8 @@
 	(function ($) {
 		fakewaffle.responsiveTabs(['xs', 'sm']);
 	})(jQuery);
+	function fill(amt) {
+		$('#rcAmt').val(amt);
+	}
 </script>
+{{ footer }}

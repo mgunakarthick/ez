@@ -11,7 +11,15 @@ class ControllerRechargeTransaction extends Controller {
 			$this->load->model('catalog/api');
 			$customer = $this->customer->getId();
 			$data['transactions'] = $this->model_catalog_api->getTrans($customer);
-			$data['amountTotal'] = $this->model_catalog_api->getCommissionTotal($customer);
+			$data['amountTotal']  = 0;
+			$data['amountTotal']  = 0;
+			$data['showCommission']  = 0;
+
+			if($this->customer->getGroupId() > 1){
+				$data['amountTotal'] = $this->model_catalog_api->getCommissionTotal($customer);
+				$data['amountTotal'] = $this->model_catalog_api->getCommissionTotal($customer);
+				$data['showCommission']  = 1;
+			}
 			//print_r($data['amountTotal']); die;
 		} else {
 			$this->response->redirect($this->url->link('common/login', '', true));

@@ -1,0 +1,96 @@
+{{ header }} {{ subheader }}
+<style>
+.right{float:right;}
+.mb30{margin-bottom:30px; }
+.btn_add{    background-color: #6EBE44;
+    text-transform: uppercase;
+    font-weight: 100;
+    color: #FFF;
+    font-size: 10px;
+    cursor: pointer;
+    padding: 6px 0;
+    text-align: center;
+    
+        float: left;
+    width: 30%;
+    margin-left: 5%;}
+</style>
+<link rel="stylesheet" type="text/css" href="https:////cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/> 
+<section class="container pay">
+	<h1>Resellers</h1>
+    <div class="button mb30 right">
+        <a class="btn " href="index.php?route=recharge/reseller/add">Add</a>
+    </div>
+	<table id="example" class="hover table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Sl No</th>
+                <th>Name</th>
+				<th>Balance</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Add Credit</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% set i=0 %}
+		 {% for r in resellers %}
+            <tr>
+                <td>{% set i = i + 1 %} {{ i }}</td>
+                <td>{{ r['firstname'] }} {{ r['lastname'] }}</td>
+                <td> {{ r['wallet'] |number_format(2, '.', ',') }} </td>
+                <td>{{ r['telephone'] }}</td>
+                <td>{{ r['email'] }}</td>
+                <td class=""> 
+                    <input style="float:left; width:50%" type="text" name="rcredit" value="{{ r['wreq'] }}"  id="{{ r['customer_id'] }}_amount" />
+                    <div onclick="addMoney(this.id);" class="btn_add" id="{{r['customer_id']}}">Add Credit</div>
+                    {# <a href="index.php?route=recharge/reseller/add&id={{ r['customer_id'] }}"> Add Money</a> #}
+                 </td>
+                <td>
+					{% if r['status'] == 1 %} 
+						Active 
+                        <a href="index.php?route=recharge/reseller/setcommission&id={{ r['customer_id'] }}">Set Commission</a>
+					{% else %}
+						Disabled
+					{% endif %}
+				 </td>
+            	<td> {{ rt['date_added']|date("d-M-Y") }} </td>
+            </tr>
+		{% endfor %}
+        </tbody>
+    </table>
+</section>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+    	$('#example').DataTable();
+	} );
+
+    function addMoney(id){
+        var amount = $('#'+id+'_amount').val();
+        if(amount > 0){
+            var url = 'index.php?route=recharge/reseller/addMoney';
+            var data = '&id='+id+'&amount='+amount;
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: data,
+                dataType: 'json',
+                beforeSend: function () {},
+                success: function (json) {
+                    if (json['success'] == 1) {
+                        alert(json['message']);
+                        location.reload();
+                    } else {
+                        alert(json['message']);
+                    }
+                }
+            });
+        } else {
+            alert('Please enter amout to credit');
+        }
+    }
+</script>
+{{ footer }}

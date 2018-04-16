@@ -43,11 +43,16 @@ class ControllerCommonHeader extends Controller {
 		}
 
 		$this->load->language('common/header');
-
-		// Wishlist
+		$data['showReseller'] = 0;
+		$data['hideAll'] = 0;
 		if ($this->customer->isLogged()) {
 			$data['customer'] = '1';
 			$data['wallet'] = $this->customer->getWallet();
+			if( $this->customer->getGroupId() > 2 && $this->customer->getctype() ==1){
+				$data['showReseller'] = 1;
+			} else if($this->customer->getGroupId() == 1){
+				$data['hideAll'] = 1;
+			}
 		} else {
 			$data['customer'] = '';
 			$data['wallet'] = 0.00;

@@ -1,0 +1,1 @@
+ALTER TABLE `customer` ADD `wreq` FLOAT(10,2) NOT NULL DEFAULT '0' AFTER `ctype`;

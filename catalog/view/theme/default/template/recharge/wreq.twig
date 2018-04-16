@@ -1,0 +1,76 @@
+{{ header }} {{ subheader }}
+<style>
+.right{float:right;}
+.mb30{margin-bottom:30px; }
+</style>
+<section class="container pay">
+	<h1>Wallet Amount Request</h1>
+	<h4> Account Name : {{customer['firstname']}}</h4>
+	<h4> Account Email : {{customer['email']}}</h4>
+	<h1> </h1>
+    <div class="row">
+    <div class="col-md-6 col-sm-12 col-lg-6 col-md-offset-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Enter Your Details Here
+			</div>
+			<div class="panel-body">
+				<form name="resellerForm" id="resellerForm" action={{ actionurl }} method="post">
+					<div class="form-group">
+						<label for="wreq">Required Wallet Amount *</label>
+						<input id="wreq" name="wreq" class="form-control" type="text" data-validation="required" value="{{customer['wreq']}}">
+						<span id="error_wreq" class="text-danger"></span>
+					</div>
+					<div id="submit" type="submit" value="submit" class="btn btn-primary center">Submit</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+</section>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var valid=1;
+        $("#wreq").focusout(function(){
+            $pho =$("#wreq").val();
+    		if($(this).val()==''){
+        		$(this).css("border-color", "#FF0000");
+        			$('#submit').attr('disabled',true);
+        			$("#error_wreq").text("* You have to enter your valid amount!");
+					valid=0;
+        	}
+        	else if ($pho < 10){   
+                    $(this).css("border-color", "#FF0000");
+        			$('#submit').attr('disabled',true);
+        			$("#error_wreq").text("*  You have to enter your valid amount, Morethan 10 Rs.");
+					valid=0;
+        	} else if(!$.isNumeric($pho)) {
+        	        $(this).css("border-color", "#FF0000");
+        			$('#submit').attr('disabled',true);
+        			$("#error_wreq").text("* You have to enter your valid amount");  
+					valid=0;
+        	} else {
+        		$(this).css({"border-color":"#2eb82e"});
+        		$('#submit').attr('disabled',false);
+        		$("#error_wreq").text("");
+        	}
+    	});
+
+   		$( "#submit" ).click(function() {
+			$amt =$("#wreq").val();
+			if(valid == 1 && $amt >=10){
+				// submit
+				$('#resellerForm').submit();
+			} else {
+				alert('please enter all values');
+				$('#submit').attr('disabled',true);
+			}
+		});
+	});
+</script>
+{{ footer }}

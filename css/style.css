@@ -1,5 +1,6 @@
 body {
   font-family: 'Poppins', sans-serif;
+  font-size: 14px;
 }
 h1,
 h2,
@@ -102,6 +103,8 @@ h1 span {
   margin: 30px auto;
   text-align: center;
   margin-bottom: 40px;
+  font-size: 15px;
+  line-height: 25px;
 }
 .about .boxs {
   min-height: 300px;
@@ -221,11 +224,10 @@ footer ul li a:hover {
 }
 footer .app a {
   display: inline-block;
-  width: 49%;
   margin-bottom: 30px;
 }
 footer .app a img {
-  width: 100%;
+  width: 150px;
 }
 footer .social a {
   display: inline-block;
@@ -235,17 +237,38 @@ footer .social a {
 footer .social a img {
   width: 100%;
 }
-footer .info img {
-  display: inline-block;
-  width: 30px;
-  margin-right: 10px;
-  margin-bottom: 30px;
+footer .info input[type="text"],
+footer .info textarea {
+  border: 1px solid #999;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  background-color: transparent;
 }
-footer .info span {
-  display: inline-block;
-  position: relative;
-  top: -10px;
-  font-size: 13px;
+footer .info input[type="text"]:hover,
+footer .info textarea:hover,
+footer .info input[type="text"]:focus,
+footer .info textarea:focus {
+  outline: 0;
+  border: 1px solid #333;
+  color: #000;
+}
+footer .info textarea {
+  height: 75px;
+  resize: none;
+}
+footer .info .btn {
+  border: 1px solid #2B3691;
+  background-color: #2B3691;
+  height: 40px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  color: #FFF;
+  font-size: 14px;
+  margin: 10px 0px;
+  margin-bottom: 20px;
 }
 footer .copyright {
   border-top: 1px solid #E5E4E4;
@@ -861,4 +884,69 @@ a:focus {
   border-bottom: 1px solid #EEE;
   margin-top: 30px;
   padding-bottom: 20px;
+}
+.aboutus h1 {
+  font-size: 30px;
+}
+.aboutus h2 {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+.aboutus p {
+  margin-bottom: 20px;
+  line-height: 25px;
+  font-size: 15px;
+  text-align: justify;
+}
+.aboutus ul li {
+  border-bottom: 1px dotted #F3F3F3;
+  padding: 10px 0;
+}
+.registraton.boxs img {
+  width: 50px;
+  margin: 0 auto;
+  display: block;
+}
+.registraton.boxs p {
+  text-align: center;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+@media screen and (max-width: 767px) {
+  .registraton.boxs img {
+    display: inline-block;
+  }
+  .registraton.boxs p {
+    display: inline-block;
+    padding-left: 20px;
+  }
+}
+.slick-slide img {
+  display: block;
+  width: 100%;
+  height: 135px;
+  padding: 0 10px;
+}
+.loader {
+  display: table;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+.loader .loader__align {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.loader .loader__align p {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 10px;
 }

@@ -1,0 +1,50 @@
+{{ header }} {{ subheader }}
+<style>
+.right{float:right;}
+.mb30{margin-bottom:30px; }
+</style>
+<section class="container pay">
+	<h1>Wallet Amount Request</h1>
+	<h4> Account Name : {{customer['firstname']}}</h4>
+	<h4> Account Email : {{customer['email']}}</h4>
+	<h1> </h1>
+    <div class="row">
+    <div class="col-md-6 col-sm-12 col-lg-6 col-md-offset-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Please Add commission percentage</div>
+			<div class="panel-body">
+				<form name="commissionForm" id="commissionForm" action={{ actionurl }} method="post">
+					<table width="100%">
+					{% for key, op in operators %}
+					<tr><td height="45">
+						<div class="form-group ">
+							<label class="col-sm-4 control-label" for="{{ op['opcode'] }}">{{ op['newtworkName'] }} <spqn style="color:red;float:right; font-size:10px;">Max(
+								{{max[key]['commission']}}
+							)</span></label>
+							<div class="col-sm-7">
+								<input type="text" name="op[{{ op['opcode'] }}]" value="{{ op['commission'] }}" placeholder="{{ op['newtworkName'] }}" id="{{ op['opcode'] }}" class="form-control" />
+							</div>
+						</div>
+						</td>
+						</tr>
+                	{% endfor %}
+					</table>
+					<button id="submit" type="submit" value="submit" class="btn btn-primary center">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+</section>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+	});
+</script>
+{{ footer }}

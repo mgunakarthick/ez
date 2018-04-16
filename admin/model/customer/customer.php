@@ -161,7 +161,7 @@ class ModelCustomerCustomer extends Model {
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY name";
+			$sql .= " ORDER BY wreq";
 		}
 
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -179,7 +179,7 @@ class ModelCustomerCustomer extends Model {
 				$data['limit'] = 20;
 			}
 
-			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+			 $sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
 
 		$query = $this->db->query($sql);
@@ -517,5 +517,11 @@ class ModelCustomerCustomer extends Model {
 	public function getOperators(){
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "operator");
 		return $query->rows;
+	}
+
+	public function addAmt($data){
+		$amt = (int)$data['wreq'];
+		/* echo "UPDATE " . DB_PREFIX . "customer SET 	wallet = wallet+$amt, wreq = 0 WHERE customer_id = '" . (int)$data['customer_id'] . "'"; */
+		$this->db->query("UPDATE " . DB_PREFIX . "customer SET 	wallet = wallet+$amt, wreq = 0 WHERE customer_id = '" . (int)$data['customer_id'] . "'");
 	}
 }

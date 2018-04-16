@@ -1,32 +1,23 @@
 {{ header }} {{ subheader }}
+<style>
+		.none{ display: none; }
+		#planBox{display:none;}
+		.planBox{ display: none; }
+</style>
 <section class="container recharge">
 	<div class="row">
 		<div class="col-12">
 			<h1>
-			
-		{% if post['t']==1 %}
-			Mobile Recharge
-        {% else %}
-			DATACARD RECHARGE
-        {% endif %}
-		
-		</h1>
+				{% if post['t']==1 %} Mobile Recharge {% else %} DATACARD RECHARGE {% endif %}
+			</h1>
 			<div class="styled-input-single">
-				<input type="radio" name="fieldset-1" id="radio-example-one" checked="checked" />
-				<label for="radio-example-one">Postpaid</label>
-
+				<input type="radio" name="mnType" value="prepaid" id="radio-example-one" checked="checked" />
+				<label for="radio-example-one">Prepaid</label>
 			</div>
 			<div class="styled-input-single">
-				<input type="radio" name="fieldset-1" id="radio-example-two" />
-				<label for="radio-example-two">Prepaid</label>
+				<input type="radio" name="mnType" value="post" id="radio-example-two" />
+				<label for="radio-example-two">Postpaid</label>
 			</div>
-			<!--    <div class="styled-input--square">
-	      <div class="styled-input-single">
-	        <input type="checkbox" name="fieldset-8" id="checkbox4-example-one" />
-	        <label for="checkbox4-example-one">Example Title</label>
-	      </div>     
-	    </div> 
- -->
 			<div class="row">
 				<div class="col-md-4 mb30">
 					<div class="input-text">
@@ -43,13 +34,10 @@
 							<option value="0">Select Operator</option>
 							<option value="AIR">Aircel</option>
 							<option value="A">Airtel</option>
-							<option value="ATV">Airtel Digital DTH TV</option>
-							<option value="BTV">BIG TV</option>
 							<option value="B3">BSNL - 3G</option>
 							<option value="BR">BSNL - STV</option>
 							<option value="BT">BSNL - TOPUP</option>
 							<option value="BS">BSNL Recharge</option>
-							<option value="DTV">DISH TV</option>
 							<option value="DS">DOCOME-SPECIAL</option>
 							<option value="D">DOCOMO</option>
 							<option value="I">IDEA</option>
@@ -62,14 +50,11 @@
 							<option value="RC">RELIANCE - JIO</option>
 							<option value="RG">RELIANCE - GSM</option>
 							<option value="T">TATA INDICOM</option>
-							<option value="TTV">TATASKY DTH TV</option>
 							<option value="U">UNINOR</option>
 							<option value="US">UNINOR - SPL</option>
-							<option value="VTV">VIDEOCON DTH TV</option>
 							<option value="VC">VIRGIN - CDMA</option>
 							<option value="VG">VIRGIN - GSM</option>
 							<option value="V">Vodafone</option>
-
 							<option value="PAT">Airtel Postpaid</option>
 							<option value="LBS">Bsnl Landline</option>
 							<option value="BP">BSNL Postpaid</option>
@@ -125,389 +110,335 @@
 				</div>
 				<div class="col-md-3 mb30">
 					<div class="button">
-							<div class="btn" id="doRc" value="Proceed" >Proceed</div>
+						<div class="btn" id="doRc" value="Proceed">Proceed</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 mb30">
+					<div class="button">
+						<div class="btn" id="plan" value="Show Plans">Check Plans</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="planBox">
+				<h2>Browse Plans of
+					<span id="oprtxt"></span>
+				</h2>
+				<ul class="nav nav-tabs responsive" id="myTab">
+					<li class="active tab1">
+						<a href="#tab1"></a>
+					</li>
+					<li class=" tab2">
+						<a href="#tab2"></a>
+					</li>
+					<li class=" tab3">
+						<a href="#tab3"></a>
+					</li>
+					<li class=" tab4">
+						<a href="#tab4"></a>
+					</li>
+					<li class=" tab5">
+						<a href="#tab5"></a>
+					</li>
+					<li class=" tab6">
+						<a href="#tab6"></a>
+					</li>
+					<li class=" tab7">
+						<a href="#tab7"></a>
+					</li>
+				</ul>
+
+				<div class="tab-content responsive">
+					<div class="tab-pane active" id="tab1">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday1">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane" id="tab2">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday2">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane" id="tab3">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday3">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="tab4">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday4">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="tab5">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday5"> </tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="tab6">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday6"> </tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="tab7">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday7"> </tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
-			<h2>Browse Plans of Vodafone - Chennai</h2>
-			<ul class="nav nav-tabs responsive" id="myTab">
-				<li class="active">
-					<a href="#offer">Best Offer</a>
-				</li>
-				<li>
-					<a href="#talktime">Full Talktime</a>
-				</li>
-				<li>
-					<a href="#3gdata">3G/4G Data</a>
-				</li>
-				<li>
-					<a href="#2gdata">2G Data</a>
-				</li>
-				<li>
-					<a href="#topup">Top Up</a>
-				</li>
-				<li>
-					<a href="#special">Special Recharge</a>
-				</li>
-				<li>
-					<a href="#roaming">Roaming</a>
-				</li>
-			</ul>
-
-			<div class="tab-content responsive">
-				<div class="tab-pane active" id="offer">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Talktime</th>
-									<th>Validity</th>
-									<th>Description</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>120</td>
-									<td>28 Days</td>
-									<td>1 GB Free 2G Data Everyday</td>
-									<td>
-										<a href="#" class="btn">Rs.120</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>0</td>
-									<td>28 Days</td>
-									<td>Unlimited Local,STD & Roaming calls within India with Unlimited Data for 28 days.</td>
-									<td>
-										<a href="#" class="btn">Rs.120</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="tab-pane" id="talktime">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Talktime</th>
-									<th>Validity</th>
-									<th>Description</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>120</td>
-									<td>28 Days</td>
-									<td>Full Talktime</td>
-									<td>
-										<a href="#" class="btn">Rs.120</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>0</td>
-									<td>28 Days</td>
-									<td>Rs.351 National Roaming Full Talktime + 10 Local Vodafone night mins</td>
-									<td>
-										<a href="#" class="btn">Rs.120</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="tab-pane" id="3gdata">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Talktime</th>
-									<th>Validity</th>
-									<th>Description</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>100</td>
-									<td>28 Days</td>
-									<td>225 MB 2G data, Post free usage 4p/10KB</td>
-									<td>
-										<a href="#" class="btn">Rs.120</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>0</td>
-									<td>28 Days</td>
-									<td>1GB -3G/4G - 5days; Post free usage 4p/10KB. Not additive to existing quota</td>
-									<td>
-										<a href="#" class="btn">Rs.93</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="tab-pane" id="2gdata">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Talktime</th>
-									<th>Validity</th>
-									<th>Description</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>120</td>
-									<td>2 Days</td>
-									<td>45 MB 2G data, Post free usage 4p/10KB</td>
-									<td>
-										<a href="#" class="btn">Rs.120</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>0</td>
-									<td>8 Days</td>
-									<td>500 MB 3G/4G Data, Post free usage 4p/10KB.</td>
-									<td>
-										<a href="#" class="btn">Rs.220</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="tab-pane" id="topup">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Talktime</th>
-									<th>Validity</th>
-									<th>Description</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>120</td>
-									<td>28 Days</td>
-									<td>1 GB Free 2G Data Everyday</td>
-									<td>
-										<a href="#" class="btn">Rs.120</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>0</td>
-									<td>28 Days</td>
-									<td>Unlimited Local,STD & Roaming calls within India with Unlimited Data for 28 days.</td>
-									<td>
-										<a href="#" class="btn">Rs.120</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="tab-pane" id="special">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Talktime</th>
-									<th>Validity</th>
-									<th>Description</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>120</td>
-									<td>28 Days</td>
-									<td>Night Pack: 100 mins to Vodafone(10pm-8am)</td>
-									<td>
-										<a href="#" class="btn">Rs.10</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>0</td>
-									<td>14 Days</td>
-									<td>STD calls to mobile @35P/Min</td>
-									<td>
-										<a href="#" class="btn">Rs.28</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="tab-pane" id="roaming">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Talktime</th>
-									<th>Validity</th>
-									<th>Description</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>0</td>
-									<td>28 Days</td>
-									<td>All outgoing mobile calls (Local, STD & Roaming) @1p/sec. Pack tariff benefits apply in Tamil Nadu and while roaming
-										anywhere in India</td>
-									<td>
-										<a href="#" class="btn">Rs.120</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>0</td>
-									<td>28 Days</td>
-									<td>FREE Data & SMS in 20 countries including the US, UAE, Singapore, Thailand, Malaysia, UK, New Zealand & more destinations.
-										(Free Data Quota 1GB per day, Rs10/MB after Free Data Quota).</td>
-									<td>
-										<a href="#" class="btn">Rs.57</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
 			</div>
-
 		</div>
-	</div>
-	{{ footer }}
-	<script type="text/javascript" src="js/responsive-tabs.js"></script>
-	<script type="text/javascript">
-		$(function () {
-			var gn = 0;
-			var nw = 0;
-			$("#rcnuber").keydown(function (e) {
-				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-					(e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
-					(e.keyCode >= 35 && e.keyCode <= 40)) {
-					return;
-				}
-				if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-					e.preventDefault();
-				}
-			});
+		<script type="text/javascript" src="js/responsive-tabs.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				var mnType = 1;
+				var gn = 0;
+				var nw = 0;
+				var pn = 0;
+				var pln = 0;
+				 $('input[type=radio][name=mnType]').change(function() {
+					if (this.value == 'prepaid') {
+						mnType = 1;
+						 $('#plan').show();
+					} else if (this.value == 'post') {
+						mnType = 2;
+						$('.planBox, #plan').hide();
+					}
+					gn = 0;	
+					reset(1);
+				});
+				$("#rcnuber").keydown(function (e) {
+					if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+						(e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+						(e.keyCode >= 35 && e.keyCode <= 40)) {
+						return;
+					}
+					if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+						e.preventDefault();
+					}
+				});
 
-			$("#rcnuber").keyup(function (e) {
-				var rcnuber = $("#rcnuber").val();
-				if (rcnuber.length >= 4 && gn == 0 && nw == 0) {
-					gn = 1;
-					var url = 'index.php?route=eapi/api/getNetwork';
-					$.ajax({
-						type: 'POST',
-						url: url,
-						data: '&rcnuber=' + rcnuber,
-						dataType: 'json',
-						beforeSend: function () {},
-						success: function (json) {
-							gn = 0;
-							if (json['data'] != '') {
-								a = json['data'].split(',');
-								var operator = a[0];
-								var circle = a[1];
-								if (operator.length > 0) {
-									nw = 1;
+				$("#rcnuber").keyup(function (e) {
+					var rcnuber = $("#rcnuber").val();
+					if (rcnuber.length >= 4 ) { // && gn == 0 && nw == 0
+						var url = 'index.php?route=eapi/api/getNetwork';
+						if(gn==0){
+							gn = 1;
+							$.ajax({
+								type: 'POST',
+								url: url,
+								data: '&rcnuber=' + rcnuber,
+								dataType: 'json',
+								beforeSend: function () {},
+								success: function (json) {
+									if (json['data'] != '') {
+										a = json['data'].split(',');
+										var operator = a[0];
+										var circle = a[1];
+										$("#operator").select2("val", operator);
+										$("#circle").select2("val", circle);
+										if (operator.length > 0) {
+											nw = 1;
+										}
+										if(mnType == 1 ){
+											$('#plan').trigger('click');
+										}
+									} else {
+										gn = 0;
+									}
 								}
-								$("#operator").select2("val", operator);
-								$("#circle").select2("val", circle);
-							}
+							});
 						}
-					});
-				} else {
-					nw = 0;
-					gn = 0;
-					$("#operator").select2("val", '0');
-					$("#circle").select2("val", '0');
-				}
-			});
-
-
-			$("#doRc").click(function () {
-				var doRc = 1;
-				var mn = $("#rcnuber").val();
-				var op = $("#operator").val();
-				var cr = $("#circle").val();
-				var rcAmt = $("#rcAmt").val();
-				if (mn.length < 10) {
-					doRc = 0;
-				}
-				if (op.length == 0) {
-					doRc = 2;
-				}
-				if (cr.length == 0) {
-					doRc = 3;
-				}
-				if (rcAmt <= 0) {
-					doRc = 4;
-				}
-				if (doRc == 1) {
-					var url = 'index.php?route=eapi/api/confirm';
-					var data = '&mn=' + mn + '&op=' + op + '&cr=' + cr+ '&rcAmt=' + rcAmt;
-					$.ajax({
-						type: 'POST',
-						url: url,
-						data: data,
-						dataType: 'json',
-						beforeSend: function () {},
-						success: function (json) {
-							if(json['error']=='1'){
-								alert(json['message']);
-							} else {
-								//alert('index.php?route=recharge/confirm'+data);
-								window.location.href = 'index.php?route=recharge/confirm'+data;
+					} else {
+						nw = 0;
+						gn = 0;
+						reset(0);
+					} 
+				});
+				$("#plan").click(function () {
+					var rcnuber = $("#rcnuber").val();
+					if (rcnuber.length < 10 ){
+						//alert('Please enter valid number');
+						//return false;
+					}
+					
+					if (pln == 0) {
+						var op = $("#operator").val();
+						var cr = $("#circle").val();
+						pln = 1;
+						var url = 'index.php?route=eapi/api/getPlan';
+						var data = '&op=' + op + '&cr=' + cr;
+						$.ajax({
+							type: 'POST',
+							url: url,
+							data: data,
+							dataType: 'json',
+							beforeSend: function () {pln = 1;},
+							success: function (json) {
+								pln = 0;
+								console.log(json);
+								if (json['error'] == '1') {
+									alert(json['message']);
+								} else {
+									$('#oprtxt').html(json['txt']);
+									var plans = json['plans'];
+									var i = 1;
+									for (var key in plans) {
+										$('.tab' + i + ' a').html(key);
+										$('.boday' + i).html(plans[key]);
+										i = i + 1;
+									}
+									$('.planBox').show();
+								}
 							}
-						}
-					});
-				} else {
-					alert('Sorry Please fill all required fields');
-				}
+						});
+					}
+				});
+
+				$("#doRc").click(function () {
+					var doRc = 1;
+					var mn = $("#rcnuber").val();
+					var op = $("#operator").val();
+					var cr = $("#circle").val();
+					var rcAmt = $("#rcAmt").val();
+					if (mn.length < 10) {
+						doRc = 0;
+					}
+					if (op.length == 0) {
+						doRc = 2;
+					}
+					if (cr.length == 0) {
+						doRc = 3;
+					}
+					if (rcAmt <= 0) {
+						doRc = 4;
+					}
+					if (doRc == 1) {
+						var url = 'index.php?route=eapi/api/confirm';
+						var data = '&mn=' + mn + '&op=' + op + '&cr=' + cr + '&rcAmt=' + rcAmt;
+						$.ajax({
+							type: 'POST',
+							url: url,
+							data: data,
+							dataType: 'json',
+							beforeSend: function () {},
+							success: function (json) {
+								if (json['error'] == '1') {
+									alert(json['message']);
+								} else {
+									window.location.href = 'index.php?route=recharge/confirm' + data;
+								}
+							}
+						});
+					} else {
+						alert('Sorry Please fill all required fields');
+					}
+				});
+
+				$('#myTab a').click(function (e) {
+					e.preventDefault()
+					$(this).tab('show')
+				});
 			});
 
-			$('#myTab a').click(function (e) {
-				e.preventDefault()
-				$(this).tab('show')
-			});
-		});
-		(function ($) {
-			fakewaffle.responsiveTabs(['xs', 'sm']);
-		})(jQuery);
-	</script>
+			function fill(amt) {
+				$('#rcAmt').val(amt);
+			}
+			function reset(all){
+				if(all == 1){
+					$("#rcnuber").val('');
+				}
+				$("#operator").select2("val", '0');
+				$("#circle").select2("val", '0');
+				$('.planBox').slideUp();
+			}
+
+			(function ($) {
+				fakewaffle.responsiveTabs(['xs', 'sm']);
+			})(jQuery);
+		</script>
+
+{{ footer }}

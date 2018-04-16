@@ -10,6 +10,7 @@ class Customer {
 	private $newsletter;
 	private $address_id;
 	private $wallet;
+	private $ctype;
 
 	public function __construct($registry) {
 		$this->config = $registry->get('config');
@@ -30,7 +31,7 @@ class Customer {
 				$this->newsletter = $customer_query->row['newsletter'];
 				$this->address_id = $customer_query->row['address_id'];
 				$this ->wallet = $customer_query->row['wallet'];
-
+				$this ->ctype = $customer_query->row['ctype'];
 				$this->db->query("UPDATE " . DB_PREFIX . "customer SET language_id = '" . (int)$this->config->get('config_language_id') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip WHERE customer_id = '" . (int)$this->session->data['customer_id'] . "' AND ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "'");
@@ -63,7 +64,7 @@ class Customer {
 			$this->newsletter = $customer_query->row['newsletter'];
 			$this->address_id = $customer_query->row['address_id'];
 			$this ->wallet = $customer_query->row['wallet'];
-		
+			$this ->ctype = $customer_query->row['ctype'];
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET language_id = '" . (int)$this->config->get('config_language_id') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 
 			return true;
@@ -83,6 +84,7 @@ class Customer {
 		$this->telephone = '';
 		$this->newsletter = '';
 		$this->address_id = '';
+		$this ->wallet = '';
 	}
 
 	public function isLogged() {
@@ -131,6 +133,12 @@ class Customer {
 		$this->wallet = $query->row['wallet'];
 		return $this->wallet;
 	}
+	
+	public function getctype() {
+		return $this->ctype;
+	}
+
+
 	public function getRewardPoints() {
 		$query = $this->db->query("SELECT SUM(points) AS total FROM " . DB_PREFIX . "customer_reward WHERE customer_id = '" . (int)$this->customer_id . "'");
 

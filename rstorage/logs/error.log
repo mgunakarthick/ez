@@ -1,34 +1,8 @@
-2018-03-04 18:11:55 - PHP Warning:  A non-numeric value encountered in C:\xampp\htdocs\r\system\library\template\Twig\Environment.php(403) : eval()'d code on line 181
-2018-03-04 18:11:55 - PHP Warning:  Division by zero in C:\xampp\htdocs\r\system\library\template\Twig\Environment.php(403) : eval()'d code on line 181
-2018-03-04 18:12:39 - PHP Warning:  A non-numeric value encountered in C:\xampp\htdocs\r\system\library\template\Twig\Environment.php(403) : eval()'d code on line 177
-2018-03-04 18:12:39 - PHP Warning:  Division by zero in C:\xampp\htdocs\r\system\library\template\Twig\Environment.php(403) : eval()'d code on line 177
-2018-03-04 18:12:49 - PHP Warning:  A non-numeric value encountered in C:\xampp\htdocs\r\system\library\template\Twig\Environment.php(403) : eval()'d code on line 177
-2018-03-04 18:12:49 - PHP Warning:  Division by zero in C:\xampp\htdocs\r\system\library\template\Twig\Environment.php(403) : eval()'d code on line 177
-2018-03-04 18:13:01 - PHP Warning:  A non-numeric value encountered in C:\xampp\htdocs\r\rstorage\cache\3d\3d9bc05613a8b6926928479b213305548442217953faccd2b31fb3f0bfa8a10c.php on line 177
-2018-03-04 18:13:01 - PHP Warning:  Division by zero in C:\xampp\htdocs\r\rstorage\cache\3d\3d9bc05613a8b6926928479b213305548442217953faccd2b31fb3f0bfa8a10c.php on line 177
-2018-03-09 0:15:14 - PHP Notice:  Undefined variable: data in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 14
-2018-03-09 0:15:15 - PHP Warning:  http_build_query(): Parameter 1 expected to be Array or Object.  Incorrect value given in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 14
-2018-03-09 0:15:15 - PHP Notice:  Undefined index: cookie in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 15
-2018-03-13 17:15:37 - PHP Warning:  mysqli::__construct(): (HY000/2002): No connection could be made because the target machine actively refused it.
- in C:\xampp\htdocs\r\system\library\db\mysqli.php on line 7
-2018-03-13 17:15:37 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in C:\xampp\htdocs\r\system\library\db\mysqli.php on line 10
-2018-03-13 17:15:37 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in C:\xampp\htdocs\r\system\library\db\mysqli.php on line 10
-2018-03-13 17:15:37 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in C:\xampp\htdocs\r\system\library\db\mysqli.php on line 10
-2018-03-15 2:37:35 - PHP Notice:  Undefined variable: data in C:\xampp\htdocs\r\catalog\controller\eapi\api.php on line 85
-2018-03-17 8:55:35 - PHP Notice:  Undefined variable: transactions in C:\xampp\htdocs\r\catalog\controller\recharge\transaction.php on line 14
-2018-03-19 6:29:25 - PHP Warning:  rand() expects parameter 2 to be integer, float given in C:\xampp\htdocs\r\catalog\controller\eapi\api.php on line 53
-2018-03-19 7:00:49 - PHP Warning:  rand() expects parameter 2 to be integer, float given in C:\xampp\htdocs\r\catalog\controller\eapi\api.php on line 54
-2018-03-19 11:47:28 - PHP Warning:  rand() expects parameter 2 to be integer, float given in C:\xampp\htdocs\r\catalog\controller\eapi\api.php on line 54
-2018-03-19 11:51:13 - PHP Warning:  rand() expects parameter 2 to be integer, float given in C:\xampp\htdocs\r\catalog\controller\eapi\api.php on line 54
-2018-03-19 11:52:13 - PHP Warning:  rand() expects parameter 2 to be integer, float given in C:\xampp\htdocs\r\catalog\controller\eapi\api.php on line 54
-2018-03-19 16:06:12 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\r\system\library\mail\mail.php on line 77
-2018-03-19 16:10:04 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\r\system\library\mail\mail.php on line 77
-2018-03-19 17:03:06 - PHP Notice:  Undefined index: operators in C:\xampp\htdocs\r\admin\controller\customer\customer.php on line 698
-2018-03-20 15:49:48 - PHP Warning:  rand() expects parameter 2 to be integer, float given in C:\xampp\htdocs\r\catalog\controller\eapi\api.php on line 54
-2018-03-20 15:49:48 - PHP Notice:  Undefined variable: data in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 53
-2018-03-20 15:49:48 - PHP Notice:  Undefined variable: data in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 64
-2018-03-20 15:49:48 - PHP Notice:  Undefined variable: data in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 65
-2018-03-20 15:52:26 - PHP Warning:  rand() expects parameter 2 to be integer, float given in C:\xampp\htdocs\r\catalog\controller\eapi\api.php on line 54
-2018-03-21 18:39:50 - PHP Notice:  Undefined variable: c in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 136
-2018-03-21 18:40:31 - PHP Notice:  Undefined variable: c in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 136
-2018-03-21 18:40:33 - PHP Notice:  Undefined variable: c in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 136
+2018-04-07 5:14:20 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\r\system\library\mail\mail.php on line 77
+2018-04-07 5:14:20 - PHP Notice:  Undefined index: pwd in C:\xampp\htdocs\r\catalog\controller\common\register.php on line 35
+2018-04-07 5:15:50 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\r\system\library\mail\mail.php on line 77
+2018-04-07 5:15:50 - PHP Notice:  Undefined index: pwd in C:\xampp\htdocs\r\catalog\controller\common\register.php on line 38
+2018-04-07 5:17:54 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\r\system\library\mail\mail.php on line 77
+2018-04-07 6:00:45 - PHP Warning:  unlink(C:/xampp/htdocs/r/rstorage/cache/cache.catalog.language.1523084445): Resource temporarily unavailable in C:\xampp\htdocs\r\system\library\cache\file.php on line 68
+2018-04-07 6:00:45 - PHP Warning:  unlink(C:/xampp/htdocs/r/rstorage/cache/cache.catalog.language.1523084445): No such file or directory in C:\xampp\htdocs\r\system\library\cache\file.php on line 68
+2018-04-07 11:12:59 - PHP Notice:  Undefined index: name in C:\xampp\htdocs\r\catalog\model\catalog\api.php on line 139

@@ -2,31 +2,18 @@
 <footer>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12 col-md-4 mb30">
+			<div class="col-sm-12 col-md-3 mb30">
 				<h2>Useful Links</h2>
-				<div class="row">
-					<div class="col-sm-6">
-						<ul>
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Help</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Refund Policy</a></li>
-							<li><a href="login.php">User Login</a></li>
-						</ul>
-					</div>
-					<div class="col-sm-6">
-						<ul>
-							<li><a href="user-registration.php">User Registration</a></li>
-							<li><a href="disttibutor-login.php">Disttibutor Login</a></li>
-							<li><a href="retailer-login.php">Retailer Login</a></li>
-							<li><a href="#">Terms of Use</a></li>
-							<li><a href="#">Customer Support</a></li>
-						</ul>
-					</div>
-				</div>
+				<ul>
+					<li><a href="about-us.php">About Us</a></li>
+					<li><a href="privacy-policy.php">Privacy Policy</a></li>
+					<li><a href="login.php">Login</a></li>
+					<li><a href="user-registration.php">User Registration</a></li>
+					<li><a href="terms-and-conditions.php">Terms and Conditions</a></li>
+					<li><a href="disclaimer.php">Disclaimer</a></li>				
+				</ul>
 			</div>
-			<div class="col-sm-6 col-md-4 mb30">
+			<div class="col-sm-12 col-md-5 mb30">
 				<h2>App Download</h2>
 				<div class="app">
 					<a href="#"><img src="images/google-play.png" /></a>
@@ -39,19 +26,13 @@
 					<a href="#" target="_blank"><img src="images/twitter.png" /></a>
 				</div>
 			</div>
-			<div class="col-sm-6 col-md-4 info mb30">
+			<div class="col-sm-12 col-md-4 info mb30">
 				<h2>Contact Information</h2>
 				<div>
-					<img src="images/location-pin.png" />
-					<span>Floor No, <br/> Address</span>
-				</div>
-				<div>
-					<img src="images/smartphone-call.png" />
-					<span>+91 12345 67890</span>
-				</div>
-				<div>
-					<img src="images/mail.png" />
-					<span>contact@eazy-pay.com</span>
+					<input type="text" placeholder="Name">
+					<input type="text" placeholder="Mobile Number">
+					<textarea placeholder="Enter Query"></textarea>
+					<input type="submit" class="btn" name="contactInfo" value="Submit" />
 				</div>
 			</div>
 		</div>
@@ -96,11 +77,35 @@
 	<p>&copy; 2018. All rights reserved.</p>
 </div>
 </footer>
-
-
-<script src="js/bootstrap.min.js"></script>
-<script src="js/select2.min.js"></script> 
-<script src="js/icheck.min.js"></script> 
-<script src="js/custom.js"></script>
+<script src="js/bootstrap.min.js?1.2"></script>
+<script src="js/wow.js?1.2"></script>
+<script src="js/select2.min.js?1.2"></script> 
+<script src="js/icheck.min.js?1.2"></script> 
+<script src="js/slick.min.js?1.2"></script>
+<script src="js/custom.js?1.2"></script>
+<script type="text/javascript">
+new WOW().init();
+ $(".regular").slick({
+	dots: false,
+	infinite: true,
+	slidesToShow: 3,
+	slidesToScroll: 1,
+	responsive: [
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
 </body>
 </html>

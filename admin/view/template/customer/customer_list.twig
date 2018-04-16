@@ -104,7 +104,8 @@
                       <td class="text-left">{% if sort == 'c.email' %}<a href="{{ sort_email }}" class="{{ order|lower }}">{{ column_email }}</a>{% else %}<a href="{{ sort_email }}">{{ column_email }}</a>{% endif %}</td>
                       <td class="text-left">{% if sort == 'customer_group' %}<a href="{{ sort_customer_group }}" class="{{ order|lower }}">{{ column_customer_group }}</a> {% else %} <a href="{{ sort_customer_group }}">{{ column_customer_group }}</a>{% endif %}</td>
                       <td class="text-left">{% if sort == 'c.status' %}<a href="{{ sort_status }}" class="{{ order|lower }}">{{ column_status }}</a>{% else %}<a href="{{ sort_status }}">{{ column_status }}</a>{% endif %}</td>
-                      <td class="text-left">{% if sort == 'c.ip' %}<a href="{{ sort_ip }}" class="{{ order|lower }}">{{ column_ip }}</a>{% else %}<a href="{{ sort_ip }}">{{ column_ip }}</a>{% endif %}</td>
+                      <td class="text-left">Balance (Rs.)</td>
+                      <td class="text-left">Credit request</td>
                       <td class="text-left">{% if sort == 'c.date_added' %}<a href="{{ sort_date_added }}" class="{{ order|lower }}">{{ column_date_added }}</a>{% else %}<a href="{{ sort_date_added }}">{{ column_date_added }}</a>{% endif %}</td>
                       <td class="text-right">{{ column_action }}</td>
                     </tr>
@@ -121,9 +122,30 @@
                     </td>
                       <td class="text-left">{{ customer.name }}</td>
                     <td class="text-left">{{ customer.email }}</td>
-                    <td class="text-left">{{ customer.customer_group }}</td>
+                    <td class="text-left">
+                      {{ customer.customer_group }}
+                        {% if customer.customer_group_id == 1 %}
+                            - Direct Customer
+                        {% elseif customer.customer_group_id == 2 %}
+                            - Direct Reseller
+                        {% elseif customer.ctype == 1 %}
+                            - Distributer
+                        {% else %}
+                            - Reseller
+                        {% endif %}   
+                        </td>
                     <td class="text-left">{{ customer.status }}</td>
-                    <td class="text-left">{{ customer.ip }}</td>
+                    <td class="text-left">{{ customer.balance }}</td>
+                    <td class="text-left">
+
+                    <div class="btn-group" style="min-width: 120px;">
+                        {% if ((customer.customer_group_id > 2) and (customer.ctype == 1)) or (customer.customer_group_id == 2)  %}
+                          <input type="text" value="{{ customer.wreq }}" id="{{ customer.customer_id }}_amt" name="amount" class="cr" style="width:70px; padding:7px 0; float:left;">
+                          <div onclick="window.location = '{{ customer.addAMt }}'+$('#{{ customer.customer_id }}_amt').val()" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add Credit"><i class="fa fa-plus"></i></div>
+                        {% endif %}
+
+                    </div>
+                    </td>
                     <td class="text-left">{{ customer.date_added }}</td>
                     <td class="text-right">
                       <div class="btn-group" style="min-width: 65px;">

@@ -11,6 +11,76 @@ class ControllerEapiApi extends Controller {
 		}
 	}
 
+	public function getPlan() {
+		$json = array('error'=>'','data'=>'','txt'=>'');
+		if(isset($this->request->post['op']) && isset($this->request->post['cr'])){
+			$this->load->model('catalog/api');
+			$codes = $this->model_catalog_api->getPlanCode($this->request->post);
+			if($codes){
+				$json['txt'] = $codes['op']['newtworkName'].' - '.$codes['cr']['name'];
+				$url = 'https://www.rcpanel.com/recharge-plan-api/?opcode='.trim($codes['op']['planOpcode']).'&zone='.trim($codes['cr']['palnCircle']);
+				//$url = 'https://www.rcpanel.com/recharge-plan-api/?opcode=AT&zone=WB';
+				$plans = $this->model_catalog_api->sendCurl($url);
+				$plans = json_decode($plans);
+				if(isset($plans->status) && $plans->status['0'] ==1 ){
+					$data = array();
+					$ctr = 0;
+					foreach($plans->tp as $key => $tp){
+						$tp = strtoupper($tp);
+						if(isset($data[$tp])){ 
+							$ctr = $ctr+1;
+							$data[$tp] .= '<tr><td>'.$ctr.'</td><td>'.$plans->val[$key].'</td><td>'.$plans->des[$key].'</td><td><div class="btn" onclick="fill('.$plans->am[$key].');"><a class="btn" href="javascript:void(0);">Rs.'.$plans->am[$key].'</a></div></td></tr>';
+						} else {
+							$ctr = 1;
+							$data[$tp] = '<tr><td>'.$ctr.'</td><td>'.$plans->val[$key].'</td><td>'.$plans->des[$key].'</td><td><div class="btn">Rs.'.$plans->am[$key].'</div></td></tr>';
+						}
+					}
+					$json['plans'] = $data;
+				} else {
+					$json['error'] = 1;
+					$json['message'] = 'Sorry! unable to get the plans';
+				}
+			} else {
+				$json['error'] = 1;
+					$json['message'] = 'Please select your operator and circle';
+			}
+			$this->response->addHeader('Content-Type: application/json');
+			$this->response->setOutput(json_encode($json));
+		}
+	}
+
+	public function getDthPlan(){
+		$json = array('error'=>'','plans'=>'','txt'=>'');
+		if(isset($this->request->post['op']) && isset($this->request->post['cr'])){
+				$url = 'https://www.rcpanel.com/recharge-plan-api/dth?opcode='.$this->request->post['op'].'&zone='.$this->request->post['cr'].'';
+				$this->load->model('catalog/api');
+				//$url = 'https://www.rcpanel.com/recharge-plan-api/dth?opcode=SD&zone=TA';
+				$plans = $this->model_catalog_api->sendCurl($url);
+				$plans = json_decode($plans);
+				//print_r($plans); // die;
+				if(isset($plans->status) && $plans->status['0'] ==1 ){
+					$data = array();
+					$ctr = 0;
+					foreach($plans->data as $plan){
+							$ctr = $ctr+1;
+							$json['plans'] .= '<tr><td>'.$ctr.'</td><td>'.$plan->package_name.'</td><td>'.$plan->package_description.'</td><td><div class="btn" onclick="fill('.$plan->package_price.');"><a class="btn" href="javascript:void(0);">Rs.'.$plan->package_price.'</a></div></td></tr>';
+					}
+				} else {
+					$json['error'] = 1;
+					if(isset($plans->status['1']) && trim($plans->status['1'])!='' ){
+						$json['message'] = $plans->status['1'];
+					} else {
+						$json['message'] = 'Sorry! unable to get the plans';
+					}
+				}
+			} else {
+				$json['error'] = 1;
+					$json['message'] = 'Please select your operator and circle';
+			}
+			$this->response->addHeader('Content-Type: application/json');
+			$this->response->setOutput(json_encode($json));
+	}
+
 	public function confirm(){
 		$json = array('error'=>0,'message'=>'','url'=>'');
 		$post = $this->request->post;
@@ -94,6 +164,5 @@ class ControllerEapiApi extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 		$data['subheader'] = $this->load->controller('common/header/subheader');
 		$this->response->setOutput($this->load->view('recharge/success', $data));
-}
-
+	}
 }

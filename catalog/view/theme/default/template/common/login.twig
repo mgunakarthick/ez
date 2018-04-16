@@ -4,6 +4,13 @@
     	<div class="row">        	
             <div class="col-md-6 mb30">
             	<h1>Sign In / Login</h1>
+                
+            <div class="err-msg" style="display:none">
+				<p>Some went wrong.Please try again some time.</p>
+			</div>
+
+
+                
                 <div class="row">
                 	<div class="col-sm-12">
                     	<div>
@@ -29,7 +36,7 @@
                          <a href="#"><i class="fa fa-twitter-square"></i></a>
                     </div>
                     <div class="col-12 registerNow">
-                        <p>New to eazy-pay.com! <a href="user-registration.php">Register Now</a>
+                        <p>New to eazy-pay.com! <a href="index.php?route=common/register">Register Now</a>
                     </div>
                     
                 </div>
@@ -79,7 +86,6 @@
           $(".login_valid").css("display","none");
             var log = "success";
       }
-	  console.log(log);
       if(log=="success"){
           $.ajax({
             type: 'POST',
@@ -88,11 +94,13 @@
             dataType: 'json',
             beforeSend: function () {},
             success: function (data) {
+                console.log(data["login"]);
                   if(data["login"]==1){
                       location.reload();	
                   } else if(data["login"]==0){
                       $(".login_valid").css("display","block");
                       $(".login_valid").html("The email and password you entered did not match our records.");
+                      $('.err-msg').slideDown('slow');
                   }
             }
           });

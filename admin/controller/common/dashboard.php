@@ -87,9 +87,9 @@ class ControllerCommonDashboard extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
-		$this->load->model('catalog/api');
-		$url = 'http://response.rcpanel.com/api_users/balance?username=110290&pwd=3q2z3uu2';
-		$data['rcPanalBalance'] = $this->model_catalog_api->sendCurl($url);
+		//$this->load->model('catalog/api');
+		//$url = 'http://response.rcpanel.com/api_users/balance?username=110290&pwd=3q2z3uu2';
+		//$data['rcPanalBalance'] = $this->model_catalog_api->sendCurl($url);
 
 		// Run currency update
 		if ($this->config->get('config_currency_auto')) {

@@ -1,0 +1,467 @@
+{{ header }} {{ subheader }}
+<style>
+	{
+		# .none= {
+			display: none;
+		}
+		#planBox{displan:none;}
+	}
+</style>
+<section class="container recharge">
+	<div class="row">
+		<div class="col-12">
+			<h1>
+
+				{% if post['t']==1 %} Mobile Recharge {% else %} DATACARD RECHARGE {% endif %}
+
+			</h1>
+			<div class="styled-input-single">
+				<input type="radio" name="fieldset-1" id="radio-example-one" checked="checked" />
+				<label for="radio-example-one">Postpaid</label>
+
+			</div>
+			<div class="styled-input-single">
+				<input type="radio" name="fieldset-1" id="radio-example-two" />
+				<label for="radio-example-two">Prepaid</label>
+			</div>
+			<!--    <div class="styled-input--square">
+	      <div class="styled-input-single">
+	        <input type="checkbox" name="fieldset-8" id="checkbox4-example-one" />
+	        <label for="checkbox4-example-one">Example Title</label>
+	      </div>     
+	    </div> 
+ -->
+			<div class="row">
+				<div class="col-md-4 mb30">
+					<div class="input-text">
+						<label>Mobile Number</label>
+						<input type="text" id="rcnuber" maxlength="10" placeholder="Mobile Number" />
+					</div>
+				</div>
+				<div class="col-md-3 mb30">
+					<div>
+						<label>Operator
+							<span class="color-red">*</span>
+						</label>
+						<select class="form-control" id="operator">
+							<option value="0">Select Operator</option>
+							<option value="AIR">Aircel</option>
+							<option value="A">Airtel</option>
+							<option value="ATV">Airtel Digital DTH TV</option>
+							<option value="BTV">BIG TV</option>
+							<option value="B3">BSNL - 3G</option>
+							<option value="BR">BSNL - STV</option>
+							<option value="BT">BSNL - TOPUP</option>
+							<option value="BS">BSNL Recharge</option>
+							<option value="DTV">DISH TV</option>
+							<option value="DS">DOCOME-SPECIAL</option>
+							<option value="D">DOCOMO</option>
+							<option value="I">IDEA</option>
+							<option value="LM">LOOP MOBILE</option>
+							<option value="MTR">MTNL - Recharge</option>
+							<option value="MTT">MTNL TOPUP</option>
+							<option value="M">MTS</option>
+							<option value="VD">RECHARGE VIDEOCON</option>
+							<option value="VS">RECHARGE VIDEOCON - SPL</option>
+							<option value="RC">RELIANCE - JIO</option>
+							<option value="RG">RELIANCE - GSM</option>
+							<option value="T">TATA INDICOM</option>
+							<option value="TTV">TATASKY DTH TV</option>
+							<option value="U">UNINOR</option>
+							<option value="US">UNINOR - SPL</option>
+							<option value="VTV">VIDEOCON DTH TV</option>
+							<option value="VC">VIRGIN - CDMA</option>
+							<option value="VG">VIRGIN - GSM</option>
+							<option value="V">Vodafone</option>
+
+							<option value="PAT">Airtel Postpaid</option>
+							<option value="LBS">Bsnl Landline</option>
+							<option value="BP">BSNL Postpaid</option>
+							<option value="IP">Idea Postpaid</option>
+							<option value="LMP">Loop Mobile Postpaid</option>
+							<option value="LMT">MTNL Delhi Landline</option>
+							<option value="RCP">Reliance CDMA Postpaid</option>
+							<option value="RGP">Reliance GSM Postpaid</option>
+							<option value="DP">Tata Docomo Postpaid</option>
+							<option value="TW">Tata Walky</option>
+							<option value="VP">Vodafone Postpaid</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3 mb30">
+					<div>
+						<label>Circle
+							<span class="color-red">*</span>
+						</label>
+						<select class="form-control" id="circle">
+							<option value="0">Select Circle</option>
+							<option value="13">Andhra Pradesh</option>
+							<option value="24">Assam</option>
+							<option value="17">Bihar & Jharkhand</option>
+							<option value="7">Chennai</option>
+							<option value="5">Delhi</option>
+							<option value="12">Gujarat</option>
+							<option value="20">Haryana</option>
+							<option value="21">Himachal Pradesh</option>
+							<option value="25">Jammu & Kashmir</option>
+							<option value="9">Karnataka</option>
+							<option value="14">Kerala</option>
+							<option value="6">Kolkata</option>
+							<option value="4">Maharashtra & Goa (except Mumbai)</option>
+							<option value="27">Madhya Pradesh & Chhattisgarh</option>
+							<option value="3">Mumbai</option>
+							<option value="26">North East</option>
+							<option value="23">Orissa</option>
+							<option value="1">Punjab</option>
+							<option value="18">Rajasthan</option>
+							<option value="8">Tamil Nadu</option>
+							<option value="10">Uttar Pradesh – East</option>
+							<option value="11">Uttar Pradesh – West</option>
+							<option value="2">West Bengal</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-2 mb30">
+					<div class="input-text">
+						<label>Amount</label>
+						<input type="text" id="rcAmt" placeholder="Amount" value="0" />
+					</div>
+				</div>
+				<div class="col-md-3 mb30">
+					<div class="button">
+						<div class="btn" id="doRc" value="Proceed">Proceed</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 mb30">
+					<div class="button">
+						<div class="btn" id="plan" value="Show Plans">Check Plans</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="planBox">
+				<h2>Browse Plans of
+					<span id="oprtxt"></span>
+				</h2>
+				<ul class="nav nav-tabs responsive" id="myTab">
+					<li class="active tab1">
+						<a href="#tab1"></a>
+					</li>
+					<li class=" tab2">
+						<a href="#tab2"></a>
+					</li>
+					<li class=" tab3">
+						<a href="#tab3"></a>
+					</li>
+					<li class=" tab4">
+						<a href="#tab4"></a>
+					</li>
+					<li class=" tab5">
+						<a href="#tab5"></a>
+					</li>
+					<li class=" tab6">
+						<a href="#tab6"></a>
+					</li>
+					<li class=" tab7">
+						<a href="#tab7"></a>
+					</li>
+				</ul>
+
+				<div class="tab-content responsive">
+					<div class="tab-pane active" id="tab1">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday1">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane" id="tab2">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday2">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane" id="tab3">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday3">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="tab4">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday4">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="tab5">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday5">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="tab6">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday6">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="tab7">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Validity</th>
+										<th>Description</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody class="boday7">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		{{ footer }}
+		<script type="text/javascript" src="js/responsive-tabs.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+
+			});
+
+			$(function () {
+				var gn = 0;
+				var nw = 0;
+				var pn = 0;
+				var pln = 0;
+				$("#rcnuber").keydown(function (e) {
+					if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+						(e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+						(e.keyCode >= 35 && e.keyCode <= 40)) {
+						return;
+					}
+					if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+						e.preventDefault();
+					}
+				});
+
+				$("#rcnuber").keyup(function (e) {
+					var rcnuber = $("#rcnuber").val();
+					if (rcnuber.length >= 4 && gn == 0 && nw == 0) {
+						gn = 1;
+						var url = 'index.php?route=eapi/api/getNetwork';
+						$.ajax({
+							type: 'POST',
+							url: url,
+							data: '&rcnuber=' + rcnuber,
+							dataType: 'json',
+							beforeSend: function () {},
+							success: function (json) {
+								gn = 0;
+								if (json['data'] != '') {
+									a = json['data'].split(',');
+									var operator = a[0];
+									var circle = a[1];
+									if (operator.length > 0) {
+										nw = 1;
+									}
+									$("#operator").select2("val", operator);
+									$("#circle").select2("val", circle);
+									$('#plan').trigger('click');
+								}
+							}
+						});
+					} else {
+						nw = 0;
+						gn = 0;
+						$("#operator").select2("val", '0');
+						$("#circle").select2("val", '0');
+					}
+				});
+				$("#plan").click(function () {
+					console.log('Plan');
+					if (pln == 0) {
+						var op = $("#operator").val();
+						var cr = $("#circle").val();
+						console.log('Plan call');
+						pln = 1;
+						var url = 'index.php?route=eapi/api/getPlan';
+						var data = '&op=' + op + '&cr=' + cr;
+						$.ajax({
+							type: 'POST',
+							url: url,
+							data: data,
+							dataType: 'json',
+							beforeSend: function () {},
+							success: function (json) {
+								console.log(json);
+								pln = 0;
+								if (json['error'] == '1') {
+									alert(json['message']);
+								} else {
+									$('#oprtxt').html(json['txt']);
+									var plans = json['plans'];
+									var i = 1;
+									for (var key in plans) {
+										$('.tab' + i + ' a').html(key);
+										$('.boday' + i).html(plans[key]);
+										i = i + 1;
+									}
+								}
+							}
+						});
+					}
+				});
+
+				$("#doRc").click(function () {
+					var doRc = 1;
+					var mn = $("#rcnuber").val();
+					var op = $("#operator").val();
+					var cr = $("#circle").val();
+					var rcAmt = $("#rcAmt").val();
+					if (mn.length < 10) {
+						doRc = 0;
+					}
+					if (op.length == 0) {
+						doRc = 2;
+					}
+					if (cr.length == 0) {
+						doRc = 3;
+					}
+					if (rcAmt <= 0) {
+						doRc = 4;
+					}
+					if (doRc == 1) {
+						var url = 'index.php?route=eapi/api/confirm';
+						var data = '&mn=' + mn + '&op=' + op + '&cr=' + cr + '&rcAmt=' + rcAmt;
+						$.ajax({
+							type: 'POST',
+							url: url,
+							data: data,
+							dataType: 'json',
+							beforeSend: function () {},
+							success: function (json) {
+								if (json['error'] == '1') {
+									alert(json['message']);
+								} else {
+									//alert('index.php?route=recharge/confirm'+data);
+									window.location.href = 'index.php?route=recharge/confirm' + data;
+								}
+							}
+						});
+					} else {
+						alert('Sorry Please fill all required fields');
+					}
+				});
+
+				$('#myTab a').click(function (e) {
+					e.preventDefault()
+					$(this).tab('show')
+				});
+			});
+
+			function plan() {
+				alert(pln);
+				if (pln == 0) {
+					alert(2);
+					return false;
+					var url = 'index.php?route=eapi/api/getPlan';
+					var data = '&op=' + op + '&cr=' + cr;
+					$.ajax({
+						type: 'POST',
+						url: url,
+						data: data,
+						dataType: 'json',
+						beforeSend: function () {},
+						success: function (json) {
+							if (json['error'] == '1') {
+								alert(json['message']);
+							} else {
+								console.log(json);
+							}
+						}
+					});
+				}
+			}
+
+			function fill(amt) {
+				$('#rcAmt').val(amt);
+			}
+			(function ($) {
+				fakewaffle.responsiveTabs(['xs', 'sm']);
+			})(jQuery);
+		</script>
